@@ -1,0 +1,45 @@
+﻿@model ProDuct
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Product</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index","Profile",FormMethod.Post,new { @enctype="multipart/form-data"}))
+        {
+            <table>
+                <tr>
+                    <td>Product Name</td>
+                    <td>@Html.TextBoxFor(e => e.Productname, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>Rate</td>
+                    <td>@Html.TextBoxFor(e => e.Rate, new { @class = "form-control" })</td>
+                </tr>
+               <tr>
+                    <td>Stock</td>
+                    <td>@Html.TextBoxFor(e => e.Stock, new { @class = "form-control" })</td>
+               </tr>
+               <tr>
+                    <td>Upload Image</td>
+                    <td><input type="file" name="Photos" multiple /></td>
+               </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+            <label>@ViewBag.msg</label>
+            <input type="button" value="View Products" onclick="location.href='@Url.Action("ViewProducts", "Profile")'" />
+        }
+    </div>
+</body>
+</html>
